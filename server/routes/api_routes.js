@@ -18,6 +18,7 @@ router.post('/insert_prayer',api_controller.Prayers);
 router.post('/insert_gallery', upload.single('g_upload'),api_controller.post_gallery);
 router.post('/audio_sermon',Audio_upload.single('audio_upload'),api_controller.post_audio_sermon);
 router.post('/books',Books_upload.single('book_upload'),api_controller.books)
+router.post('/email',api_controller.send_email);
 //update route
 router.post('/update_welcome/:id',api_controller.update_welcome);
 router.post('/audio_cover_upload',upload.single('cover_upload'),api_controller.update_audio_sermon_cover_photo);

@@ -111,33 +111,19 @@
                                         <tr>
                                             
                                             <th>Title</th>
-                                            <th> file Name</th>
+                                            <th> Book image</th>
                                             <th>Author</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <style>
-                                               #pdfContainer {
-                                                display: none;
-                                                width: 100%;
-                                                height: 600px;
-                                            }
-                                            .cover {
-                                                cursor: pointer;
-                                                max-width: 100%;
-                                                height: auto;
-                                            }
-                                        </style>
+                                        
                                        <% Books.forEach(function(book) { %>
                                         <tr>
                                             <td><%= book.title %></td>
-                                            <td>
-                                                <img src="uploads/1741447723118.png" alt="PDF Cover" class="cover" onclick="showPDF()">
-    
-                                                <iframe id="pdfContainer" src="uploads/books/<%= book.book_name %>"></iframe>
-
+                                            <td style="width:30%;">
+                                                <img src="uploads/1741447723118.png" alt="PDF Cover" class="cover" style="width:40%;">
                                             </td>
                                             <td><%= book.author  %></td>
                                             <td>

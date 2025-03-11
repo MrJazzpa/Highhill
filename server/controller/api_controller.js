@@ -7,6 +7,7 @@
  const Prayer_model = require('../models/prayer_model');
  const audio_model = require('../models/sermon_audio_model');
  const book_model = require('../models/book_model');
+ const transporter = require('../middleware/email');
  const bcrypt = require('bcryptjs');
  //const mongoose = require('mongoose');
  const session = require('express-session');
@@ -16,8 +17,7 @@
 const prayer_model = require('../models/prayer_model');
 const { constants } = require('buffer');
 const gallery_model = require('../models/gallery_model');
-const { title } = require('process');
-const { error } = require('console');
+
 
 
 
@@ -347,6 +347,25 @@ exports.delete_audio_sermon = async(req,res)=>{
         .catch(error =>{
             console.log(error);
         })
+}
+
+exports.send_email = async(req,res)=>{
+      data = req.body;
+      const {to,subject,text}=req.body;
+      const mailOptions = {
+          from: process.env.EMAIL,
+          to,
+          subject,
+          text
+      }
+        
+      try{
+         await transporter.sendMail(mailOptions);
+         res.status(200).json({message:"email sent successfully"});
+      }catch(error){
+        res.status(500).json({error:error.message});
+      }
+    
 }
 
  
