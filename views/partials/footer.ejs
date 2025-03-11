@@ -1,0 +1,121 @@
+<footer>
+    <div class="container">
+    <div class="row">
+    <div class="span12">
+    <div class="bot1">
+        <div class="row">
+            <div class="span3">
+                <div class="block1 pad_bottom">
+                    <div class="logo_wrapper2"><a href="index.html" class="logo2"><img src="images/logo2.png" alt=""></a></div>
+                    <p>
+                        8901 Marmora Road,<br>
+    Glasgow, D04 89GR.<br>
+    Telephone: +1 800 123 1234<br>
+    E-mail: <a href="#">info@companyname.com</a>
+                    </p>
+                    <a href="index-6.html" class="location">Location map</a>
+                </div>
+            </div>
+            <div class="span3">
+                <div class="block2 pad_bottom">
+                    <div class="bot_title">Hot Topics</div>
+                    <ul class="ul0">
+                      <li><a href="#">Donations</a></li>
+                      <li><a href="#">Urgent needs</a></li>
+                      <li><a href="#">Top sermons</a></li>
+                      <li><a href="#">Join us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="span3">
+                <div class="block3 pad_bottom">
+                    <div class="bot_title">Information</div>
+                    <ul class="ul0">
+                      <li><a href="#">Lorem ipsum dolor</a></li>
+                      <li><a href="#">Sit amet consectetue</a></li>
+                      <li><a href="#">Adipiscing elit</a></li>
+                      <li><a href="#">Nunc suscipit</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="span3">
+                <div class="block4 pad_bottom">
+                    <div class="bot_title">Follow Us</div>
+                    <ul class="ul_social">
+                      <li><a href="#"><img src="images/social_ic1.png" alt="" class="img"><span>Facebook</span></a></li>
+                      <li><a href="#"><img src="images/social_ic2.png" alt="" class="img"><span>Twitter</span></a></li>
+                      <li><a href="#"><img src="images/social_ic3.png" alt="" class="img"><span>YouTube</span></a></li>
+                      <li><a href="#"><img src="images/social_ic4.png" alt="" class="img"><span>Linked in</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>	
+    <div class="bot2">
+        <div class="pad_bottom">
+            <div class="copyright">Copyright © 2018 <a class="copyright" href="https://gridgum.com">GRIDGUM</a> All rights reserved.</div>
+        </div>
+    </div>	
+    </div>	
+    </div>	
+    </div>
+    </footer>
+    
+    </div>	
+    </div>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script>
+        function showPDF() {
+            document.getElementById('pdfContainer').style.display = 'block';
+        }
+    </script>
+    <script>
+        $(document).ready(function(){
+            let  count = 0;
+             $('#inputmessage').on('input',function(){
+                 var charcount = $(this).val().length;
+                 $('#charcount').text(charcount);
+                 count = charcount;
+                 if(charcount>100){
+                 
+                    alert("Exceeded number of text allowed ")
+                 }else{
+                    $('#submitbtn').prop('disabled',false);
+                 }
+             });
+
+           $('#ajax-contact-form').on('submit',function(e){
+              e.preventDefault();
+               let Member_name = $('#inputname').val();
+               let Member_email = $('#inputemail').val();
+               let Member_phone = $('#inputphone').val();
+               let Content = $('#inputmessage').val();
+               if(Member_name=="" && Member_email == "" && Member_phone == "" && Content == ""){
+                  alert('all fields must be filled before prayers can be sent');
+
+               }else{
+                     if(count>100){
+                        alert(" Maximun number character has been reached");
+                     }
+                     else{
+                        $.post('http://localhost:3000/api/insert_prayer',
+                     {
+                           Name:Member_name,
+                           Email:Member_email,
+                           Phone:Member_phone,
+                           Message:Content
+                     },
+                     function(data){
+                          if(data.status==200){
+                              alert('Your prayer request has been uploaded successfully');
+                          }else{
+                            alert('could not upload Prayers');
+                          }
+                     });
+                     }
+               }
+        });
+    });
+    </script>
+    </body>
+    </html>

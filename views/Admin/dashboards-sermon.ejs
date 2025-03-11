@@ -1,0 +1,195 @@
+<%- include('admin_partials/header') %>
+<%- include('admin_partials/sidebar') %>
+            <div class="app-main__outer">
+                <div class="app-main__inner">
+                    <div class="app-page-title app-page-title-simple">
+                        <div class="page-title-wrapper">
+                            <div class="page-title-heading">
+                                <div>
+                                    <div class="page-title-head center-elem">
+                                        <span class="d-inline-block pr-2">
+                                            <i class="lnr-apartment opacity-6"></i>
+                                        </span>
+                                        <span class="d-inline-block">HighHill Dashboard</span>
+                                    </div>
+                                    <div class="page-title-subheading opacity-10">
+                                        <nav class="" aria-label="breadcrumb">
+                                            <ol class="breadcrumb">
+                                                <li class="breadcrumb-item">
+                                                    <a>
+                                                        <i aria-hidden="true" class="fa fa-home"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="breadcrumb-item">
+                                                    <a href="/dashboard">Dashboards</a>
+                                                </li>
+                                                
+                                            </ol>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>     
+                    <div id="msg"></div>
+            
+                        
+                    <div class="row">
+                        <div class="col-sm-12 col-md-7 col-lg-12">
+                            <div class="mb-3 card">
+                                <div class="card-header-tab card-header">
+                                    <div class="card-header-title font-size-lg text-capitalize font-weight-normal">Audio Sermon Upload
+                                    </div>
+                                    
+                                </div>
+                                <div class="pt-0 card-body">
+                                    <br>
+                                    <a href="" class="btn btn-outline-success" > update sermon cover photo</a>
+                                   <form id="audio_sermon" enctype="multipart/form-data" style="margin-top:2%">
+                                    <div id="msg"></div>
+                                     <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="position-relative form-group">
+                                               <label for="">Post Heading</label>
+                                               <input type="text" class="form-control" id="audio_heading" name="audio_heading">
+                                            </div>
+                                        </div> 
+                                        <div class="col-md-12">
+                                            <div class="position-relative form-group">
+                                                <label for="">Upload Audio Sermon ( MPEG/MP3 Only)</label>
+                                               <input type="file" name="audio_upload" id="audio_upload" class="form-control">
+                                            </div>
+                                        </div> 
+
+
+                                     </div>
+                                     <div class="btn-actions-pane-right text-capitalize">
+                                        <button type="submit" class="btn btn-warning" style="float: right;">Save</button>
+                                    </div>
+                                   </form>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-sm-12 col-md-7 col-lg-12">
+                            <div class="mb-3 card">
+                                <div class="card-header-tab card-header">
+                                    <div class="card-header-title font-size-lg text-capitalize font-weight-normal">Welcome TEXT
+                                    </div>
+                                    
+                                </div>
+                                 <style>
+                                    .change::file-selector-button{
+                                           
+                                        border: none;
+                                        color: forestgreen;
+                                        background-color: white;
+                                           
+                                    }
+                                    #coverPhoto{
+                                        width:80%;
+                                        border-radius: 4px;
+                                        box-shadow: 4px lightgray;
+                                        margin-left:10%;
+                                    }
+                                 </style>
+                                <div class="pt-0 card-body">
+                                    <table style="width: 100%;" id="example"
+                                    class="table table-hover table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            
+                                            <th>Heading</th>
+                                            <th>Audio File</th>
+                                            <th>Cover Photo</th>
+                                            <th>Date Created</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       <% audio_file.forEach(function(audio) { %>
+                                        <tr>
+                                            <td><%= audio.heading  %></td>
+                                            <td><%= audio.audio_file %></td>
+                                            <td style="width:20%;">
+                                                <% if (audio.cover_photo=="no file") { %>
+                                                   <form id="cover_photo" >
+                                                    <input type="file" class="form-control change" name="cover_upload" id="cover_upload" >
+                                                    <input type="hidden" class="form-control" name="id_uplaod" id="id_uplaod" class="form-control" value="<%= audio._id %>">
+                                                    <button type="submit" class="btn btn-outline-success" style="margin-left:0%;margin-top:2%; width:100%;">upload Cover</button>
+                                                   </form>
+                                              <% } else { %>
+                                                  <img src="uploads/<%= audio.cover_photo %>" alt=" no file found" id="coverPhoto">
+                                              <% }   %>
+                                               
+                                             </td>
+                                            <td><%= audio.createdAt %></td>
+                                            <td><button type="button" class="btn mr-2 mb-2 btn-outline-primary" data-toggle="modal"
+                                                data-target="#exampleModal">
+                                                edit
+                                            </button></td>
+                                            <td><button class="btn btn-outline-danger" id="delete_audio_cover" data-id="<%= audio._id %>" >delete</button></td>
+                                        </tr>
+                                       <% }) %>
+                                        
+                                       
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Conten-Type</th>
+                                            <th>Date Created</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                                   
+                                </div>
+                            </div>
+
+                            
+                        </div>
+                        
+
+                         
+                        
+                    </div>
+                
+                </div>
+                
+                <%- include('admin_partials/footer') %>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">UPDATE COVER PHOTO </h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form id="audio_cover_photo">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="position-relative form-group">
+                                       <label for="">cover Photo</label>
+                                       <input type="file" class="form-control" id="audio_cover" name="audio_cover">
+                                    </div>
+                                </div> 
+                            </div>
+                         
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                       </form>
+                      </div>
+                    </div>
+                  </div>

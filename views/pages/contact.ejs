@@ -1,0 +1,134 @@
+<%- include('../partials/header') %>
+	<div id="slider2">
+		<img src="images/slide_page6.jpg" alt="" class="img">
+		<img src="images/colorized.gif" alt="" class="colorized">
+		<div class="txt1">mail us</div>
+	</div>
+	</div>
+
+	<div class="top2">
+		<div class="slogan">
+			<div class="container">
+				<div class="row">
+					<div class="span9">
+						<div class="txt1">they love to be greeted in the marketplaces and to have men call them 'Rabbi.'
+							"But you are not to be called 'Rabbi,' for you have only one Master and you are all
+							brothers.</div>
+						<div class="txt2">Matthew 23:6-8</div>
+					</div>
+					<div class="span3">
+						<div class="txt3"><a href="https://paystack.com/pay/2v0lt7rjt4" class="join">Donate Now</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="content">
+		<div class="container">
+			<div class="row">
+				<div class="span6">
+					<div class="pad_left20 pad_right20">
+						<h1>Our Location</h1>
+
+						<figure class="google_map">
+							<iframe
+								src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Glasgow,&amp;aq=&amp;sll=46.975033,31.994583&amp;sspn=0.368248,0.617294&amp;vpsrc=6&amp;ie=UTF8&amp;hq=&amp;hnear=Glasgow,+Glasgow+City,+United+Kingdom&amp;t=m&amp;ll=55.866932,-4.256344&amp;spn=0.020324,0.070896&amp;z=13&amp;output=embed"></iframe>
+						</figure>
+
+
+
+
+
+					</div>
+
+
+
+
+
+
+
+
+
+				</div>
+				<div class="span6">
+					<div class="pad_right20">
+						<h2>Prayer Request Form</h2>
+
+						<div id="note"></div>
+
+						<div id="fields">
+							<form id="ajax-contact-form" class="form-horizontal" >
+
+
+								<div class="control-group">
+									<label class="control-label" for="inputName">Your full name:</label>
+									<div class="controls">
+										<input class="" type="text" id="inputname" name="inputname" placeholder="Your full name:">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="inputEmail">Your email:</label>
+									<div class="controls">
+										<input class="" type="text" id="inputemail" name="inputemail" placeholder="Your email:">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="inputPhone">Phone number:</label>
+									<div class="controls">
+										<input class="" type="text" id="inputphone" name="inputphone" placeholder="Phone number:"
+											>
+									</div>
+								</div>
+
+
+								<div class="control-group">
+									<label class="control-label" for="inputmessage">Message:</label>
+									<div class="controls">
+										<textarea class="" id="inputmessage" name="inputmessage"></textarea>
+									</div>
+								</div>
+								<p style="color:#ffff" id="counter_text">number of character shouldn't exceed 50</p>
+                                  <div style="width:10%; height:30px; background-color: white;color:#333;margin-bottom:2%; border-radius: 4px;">
+									 <p style=" text-align: center; font-size: large; padding-top:10%;"> <span id="charcount" >0</span></p>
+								  </div>
+								<button type="submit" class="submit" id="submitbtn"><em></em>Submit</button>
+							</form>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+			<div class="row" >
+				<% getContact.forEach(function(contact) { %>
+					<div  style="background-color: white; margin-left:20%; width:60%; border-radius: 4px; height: 350px;">
+						<div class="card text-center">
+							<div class="card-header">
+								Featured
+							</div>
+							<div class="card-body">
+								<h3 class="card-title" style="font-weight: bolder; color:forestgreen">Email Address</h3>
+								<p class="card-text" style="color:#333;font-size:2vw"><%= contact.email %></p>
+								<h3 class="card-title" style="font-weight: bolder; color:forestgreen">Phone Number</h3>
+								<p class="card-text" style="color:#333;font-size:2vw"><%= contact.phoneNumber %><br>
+									<h3 class="card-title" style="font-weight: bolder; color:forestgreen">Address</h3>
+									<p class="card-text" style="color:#333;font-size:2vw"><%= contact.address %>
+								
+							</div>
+							
+						</div>
+
+
+				<% }) %>
+				</div><!--end of span-->
+
+
+			</div><!--end of row-->
+		</div>
+	</div>
+
+	<%- include('../partials/footer') %>

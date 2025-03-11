@@ -1,0 +1,241 @@
+<%- include('admin_partials/header') %>
+<%- include('admin_partials/sidebar') %>
+            <div class="app-main__outer">
+                <div class="app-main__inner">
+                    <div class="app-page-title app-page-title-simple">
+                        <div class="page-title-wrapper">
+                            <div class="page-title-heading">
+                                <div>
+                                    <div class="page-title-head center-elem">
+                                        <span class="d-inline-block pr-2">
+                                            <i class="lnr-apartment opacity-6"></i>
+                                        </span>
+                                        <span class="d-inline-block">HighHill Dashboard</span>
+                                    </div>
+                                    <div class="page-title-subheading opacity-10">
+                                        <nav class="" aria-label="breadcrumb">
+                                            <ol class="breadcrumb">
+                                                <li class="breadcrumb-item">
+                                                    <a>
+                                                        <i aria-hidden="true" class="fa fa-home"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="breadcrumb-item">
+                                                    <a href="/dashboard">Dashboards</a>
+                                                </li>
+                                                
+                                            </ol>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>     
+                    <div class="row">
+                        <div class="col-md-4" style="margin-bottom: 2%;">
+                            <a href="" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal_logo">Upload Logo</a>
+                        </div>
+                    </div>
+                    <div id="msg"></div>
+                        
+                    <div class="row">
+                        <div class="main-card mb-3 card" style="width: 100%;">
+                            <div class="card-body">
+                                <table style="width: 100%;" id="example"
+                                    class="table table-hover table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>id</th>
+                                            <th>heading</th>
+                                            <th>text</th>
+                                            <th>Date Created</th>
+                                            <th>edit</th>
+                                            <th>delete</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       <% rs_welcome.forEach(function(welcome) { %>
+                                        <tr>
+                                           
+                                            <td><%= welcome._id %></td>
+                                            <td><%= welcome.heading %></td>
+                                            <td><%= welcome.welcome_text %></td>
+                                            <td><%= welcome.createdAt %></td>
+                                            <td><button type="button" class="btn mr-2 mb-2 btn-outline-primary" data-toggle="modal"
+                                                data-target="#exampleModal">
+                                                edit
+                                            </button></td>
+                                            <td><button class="btn btn-outline-danger" id="welcome_btn_delete" data-id="<%= welcome._id %>" >delete</button></td>
+                                        </tr>
+                                       <% }) %>
+                                        
+                                       
+                                    </tbody>
+                                    <!--<tfoot>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Conten-Type</th>
+                                            <th>Date Created</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </tfoot>-->
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-7 col-lg-12">
+                            <div class="mb-3 card">
+                                <div class="card-header-tab card-header">
+                                    <div class="card-header-title font-size-lg text-capitalize font-weight-normal">UPLOAD BANNER IMAGE
+                                    </div>
+                                    
+                                </div>
+                                <div class="pt-0 card-body">
+                                   <form id="banner_form"  style="margin-top:2%" enctype="multipart/form-data">
+                                     <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="position-relative form-group">
+                                               <label for="">Upload Banner Images (1)</label>
+                                               <input type="file" class="form-control" id="banner_image1" name="banner_image1">
+                                            </div>
+                                        </div> 
+
+                                     </div>
+
+                                     <div class="btn-actions-pane-right text-capitalize">
+                                        <button type="submit" class="btn btn-warning" style="float: right;">Save Community</button>
+                                    </div>
+                                   </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-card mb-3 card" style="width: 100%;">
+                            <div class="card-body">
+                                <table style="width: 100%;" id="example"
+                                    class="table table-hover table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Conten-Type</th>
+                                            <th>Date Created</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       <% banners.forEach(function(banner) { %>
+                                        <tr>
+                                            <td style="width:10%;"><img style="width:100%;" src="uploads/<%= banner.name %>"></td>
+                                            <td><%= banner.name %></td>
+                                            <td><%= banner.contentType %></td>
+                                            <td><%= banner.createdAt %></td>
+                                            <td><button type="button" class="btn mr-2 mb-2 btn-outline-primary" data-toggle="modal"
+                                                data-target="#exampleModal">
+                                                edit
+                                            </button></td>
+                                            <td><button class="btn btn-outline-danger" id="delete-welcome" data-id="<%= banner._id %>" >delete</button></td>
+                                        </tr>
+                                       <% }) %>
+                                        
+                                       
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Conten-Type</th>
+                                            <th>Date Created</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+            
+                </div>
+                
+                <%- include('admin_partials/footer') %>
+               <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Update Welcome Note</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+           
+            <form id="update_welcome">
+                <div id="msge"></div>
+                <div class="row">
+                   <% rs_welcome.forEach(function(getdata) { %>
+                    <div class="col-md-12">
+                        <label for="">Header Text</label>
+                        <input type="text" class="form-control" id="update_welcome_id" name="update_welcome_id" value="<%= getdata._id %>" readonly>
+                    </div>
+                    <div class="col-md-12">
+                        <label for=""></label>
+                        <input type="hidden" value="<%= getdata.createdAt %>" id="createdat" name="createdat">
+                       <textarea name="update_welcome_text" id="update_welcome_text" class="form-control" ><%= getdata.welcome_text %></textarea>
+                    </div>
+                   <% }) %>
+                </div>
+          
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button  class="btn btn-outline-warning">Save changes</button>
+        </div>
+    </form>
+    </div>
+</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal_logo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel_logo"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Logo Upload</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="">
+
+                    <div class="row">
+                       
+                       <div class="col-md-12">
+                        <label for="">Upload Logo</label>
+                        <input type="file" accept="image/*" class="form-control-file" name="logo_file" id="logo_file" onchange="loadFile(event)">
+                       </div>
+
+                       <div class="col-md-12" style="margin-top:2%;" >
+                        <img id="preview_image" style="height:50px;width:20%; border:none;" >
+                       </div>
+                    </div>
+
+                   
+               
+               
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>

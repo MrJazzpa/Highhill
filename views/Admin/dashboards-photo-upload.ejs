@@ -1,0 +1,97 @@
+<%- include('admin_partials/header') %>
+<%- include('admin_partials/sidebar') %>
+            <div class="app-main__outer">
+                <div class="app-main__inner">
+                    <div class="app-page-title app-page-title-simple">
+                        <div class="page-title-wrapper">
+                            <div class="page-title-heading">
+                                <div>
+                                    <div class="page-title-head center-elem">
+                                        <span class="d-inline-block pr-2">
+                                            <i class="lnr-apartment opacity-6"></i>
+                                        </span>
+                                        <span class="d-inline-block">HighHill Dashboard</span>
+                                    </div>
+                                    <div class="page-title-subheading opacity-10">
+                                        <nav class="" aria-label="breadcrumb">
+                                            <ol class="breadcrumb">
+                                                <li class="breadcrumb-item">
+                                                    <a>
+                                                        <i aria-hidden="true" class="fa fa-home"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="breadcrumb-item">
+                                                    <a href="/dashboard">Dashboards</a>
+                                                </li>
+                                                
+                                            </ol>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>     
+                    <div id="msg"></div>
+            
+                        
+                    <div class="row">
+                        <div class="col-sm-12 col-md-7 col-lg-12">
+                            <div class="mb-3 card">
+                                <div class="card-header-tab card-header">
+                                    <div class="card-header-title font-size-lg text-capitalize font-weight-normal">Gallery Uploads
+                                    </div>
+                                    
+                                </div>
+                                <div class="pt-0 card-body">
+                                   <form id="gallery_form"  style="margin-top:2%">
+                                    <div id="msg"></div>
+                                     <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="position-relative form-group">
+                                               <label for="">little Note</label>
+                                               <input type="text" class="form-control" id="gl_txt" name="gl_txt">
+                                            </div>
+                                        </div> 
+                                        <div class="col-md-12">
+                                            <div class="position-relative form-group">
+                                                <label for="">Upload Picture to Gallery</label>
+                                               <input type="file" name="g_upload" id="g_upload" class="form-control">
+                                            </div>
+                                        </div> 
+
+
+                                     </div>
+                                     <div class="btn-actions-pane-right text-capitalize">
+                                        <button type="submit" class="btn btn-warning" style="float: right;">Save About</button>
+                                    </div>
+                                   </form>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-sm-12 col-md-7 col-lg-12">
+                            <div class="mb-3 card">
+                                <div class="card-header-tab card-header">
+                                    <div class="card-header-title font-size-lg text-capitalize font-weight-normal">Welcome TEXT
+                                    </div>
+                                    
+                                </div>
+                                <div class="pt-0 card-body">
+                                   
+                                </div>
+                            </div>
+
+                            
+                        </div>
+                        
+
+                         
+                        
+                    </div>
+                
+                </div>
+                <%- include('admin_partials/footer') %>
+               

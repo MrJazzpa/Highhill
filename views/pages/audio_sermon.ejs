@@ -1,0 +1,67 @@
+<%- include('../partials/header') %>
+	<div id="slider2">
+		<img src="images/slide_page4.jpg" alt="" class="img">
+		<img src="images/colorized.gif" alt="" class="colorized">
+		<div class="txt1">our sermons</div>
+	</div>
+	</div>
+
+	<div class="top2">
+		<div class="slogan">
+			<div class="container">
+				<div class="row">
+					<div class="span9">
+						<div class="txt1">However, each one of you also must love his wife as he loves himself, and the
+							wife must respect her husband.</div>
+						<div class="txt2">Ephesians 5:33</div>
+					</div>
+					<div class="span3">
+						<div class="txt3"><a href="https://paystack.com/pay/2v0lt7rjt4" class="join">Donate Now</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="content">
+		<div class="container">
+			<div class="row">
+	          <div class="span12">
+
+
+				<ul class="thumbnails" id="isotope-items">	
+					<% audio_sermon.forEach(function(audio) { %>
+						
+						<li class="span3 isotope-element isotope-filter1" style="margin-left:2%; width:30%; height:55px; margin-bottom:4%;">
+							<div class="thumb-isotope">
+								<div class="thumbnail clearfix">
+									<figure>
+										<!--<img src="uploads/" alt="">-->
+										<audio controls>
+											<source src="uploads/audio/<%= audio.audio_file %>" type="audio/mpeg"><em></em>
+										  Your browser does not support the audio element.
+										  </audio>
+										  <div class="caption">
+											<p style="margin-left:4%;">
+												<%= audio.heading %>
+											</p>
+										</div>
+									</figure>
+									
+								</div>
+							</div>
+						</li>
+					<% }) %>	  
+				   
+					
+				  
+				   
+				</ul>
+
+			  </div>
+			</div>
+		</div>
+	</div>
+
+	<%- include('../partials/footer') %>
